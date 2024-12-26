@@ -1,8 +1,8 @@
 <body id="ijy6">
-  ver test 8
+  ver test 9
   <div id="ifd2">
     <!-- Embedded Google Sheet iframe -->
-    <iframe id="iawq" width="100%" height="80%" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?single=true&widget=true&amp;headers=false"></iframe>
+    <iframe id="iawq" width="100%" height="80%" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?widget=true&amp;headers=false"></iframe>
   </div>
 
   <script>
@@ -12,16 +12,17 @@
       return urlParams.get(name);
     }
 
-    // Function to update the iframe source with the gid from the URL
+    // Function to update the iframe source with the gid from the URL, defaulting to 0 if not found
     function updateIframeSource() {
-      const gid = getQueryParam('gid'); // Get the 'gid' from the query string
-      if (gid) {
-        const iframe = document.getElementById('iawq');
-        const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?single=true&widget=true&headers=false";
-        iframe.src = baseUrl + "&gid=" + gid; // Append the gid parameter to the iframe src URL
-      } else {
-        alert("GID parameter not found in the URL."); // Alert if gid is not found
+      let gid = getQueryParam('gid'); // Get the 'gid' from the query string
+      if (!gid) {
+        gid = '0'; // Default to 0 if gid is not found
+        alert("GID parameter not found. Defaulting to sheet 0."); // Alert for default action
       }
+
+      const iframe = document.getElementById('iawq');
+      const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?widget=true&headers=false";
+      iframe.src = baseUrl + "&gid=" + gid; // Append the gid parameter (or default 0) to the iframe src URL
     }
 
     // Call the function to update iframe source when the page loads
