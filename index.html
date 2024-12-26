@@ -1,5 +1,5 @@
 <body id="main-body">
-  ver test 10
+  ver test 11
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
@@ -28,6 +28,6 @@
     }
 
     // Call the function to update iframe source when the page loads
-    updateIframeSource();
+    window.onload = updateIframeSource();
   </script>
 </body>
