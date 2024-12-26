@@ -1,6 +1,26 @@
 <body id="ijy6">
   ver test 6
-  <div id="ifd2">
+  <div id="google-sheet-iframe">
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?widget=true&amp;headers=false" id="iawq" width="100%" height="80%"></iframe>
    </div>
+  <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to update the iframe src based on the query parameter 'gid'
+        function updateIframeSource() {
+            const gid = getQueryParam('gid');  // Get the 'gid' from the URL
+            if (gid) {
+                const iframe = document.getElementById('google-sheet-iframe');
+                const baseUrl = ""https://docs.google.com/spreadsheets/d/e/2PACX-1vRBOtpi8G-lRWH-xsBNKdEsZSjV31hhhC8Bw79tqxrj3eKwtH5jj-OCNJyYcleCQk8zDxYWBqmXswdA/pubhtml?widget=true&amp;headers=false";
+                iframe.src = baseUrl + "&gid=" + gid;  // Update the src with the specific sheet (gid)
+            }
+        }
+
+        // Call the function to update iframe on page load
+        updateIframeSource();
+    </script>
 </body>
