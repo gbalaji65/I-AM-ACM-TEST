@@ -1,5 +1,5 @@
 <body id="main-body">
-  ver test 6
+  ver test 10
   <div id="div-1">
     <!-- Embedded Google Sheet iframe -->
     <iframe id="gsheet-frame" width="100%" height="80%"></iframe>
@@ -20,7 +20,6 @@
       let gid = getQueryParam('gid'); // Get the 'gid' from the query string
       if (!gid) {
         gid = '0'; // Default to 0 if gid is not found
-        alert("GID parameter not found. Defaulting to sheet 0."); // Alert for default action
       }
 
       // Update iframe src with the base URL and the gid parameter
